@@ -50,3 +50,10 @@ app.*.map.json
 # Generated files
 coverage/
 *.g.dart
+
+# Flutter generated plugin files
+**/linux/flutter/generated_*
+**/windows/flutter/generated_*
+**/macos/flutter/GeneratedPluginRegistrant.swift
+macos/Flutter/GeneratedPluginRegistrant.swift
+
