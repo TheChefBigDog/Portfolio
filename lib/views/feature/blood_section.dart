@@ -1,8 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class BloodSection extends StatelessWidget {
-  const BloodSection({Key? key}) : super(key: key);
+class BloodSection extends StatefulWidget {
+  final VoidCallback? onDownPressed;
+
+  const BloodSection({Key? key, this.onDownPressed}) : super(key: key);
+
+  @override
+  State<BloodSection> createState() => _BloodSectionState();
+}
+
+class _BloodSectionState extends State<BloodSection>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _bounceAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 800),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    _bounceAnimation = Tween<double>(begin: 0, end: 12).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   Future<void> _openWhatsApp() async {
     final uri = Uri.parse('https://wa.me/62859211150899');
@@ -20,58 +50,76 @@ class BloodSection extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // Background
           Image.asset('assets/images/bobby_AI.png', fit: BoxFit.cover),
-
-          // Quote + button in one Positioned
           Positioned(
-            top: screenH * 0.2,
-            left: screenW * 0.1,
-            width: screenW * 0.4,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'To Force or not to Force, That is the question',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    shadows: [Shadow(blurRadius: 6, color: Colors.black54)],
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text(
-                  '~Bobby Ryan Hartono, 2025',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.white70,
-                  ),
-                ),
-
-                // exactly 16px below the quote
-                const SizedBox(height: 16),
-
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.redAccent,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 32,
-                      vertical: 14,
+            top: screenH * 0.35,
+            child: SizedBox(
+              width: screenW * 0.4,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Guilt can be a killer.',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      shadows: [Shadow(blurRadius: 6, color: Colors.black54)],
                     ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    '~Bobby Ryan Hartono, 2025',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.white70,
                     ),
-                    elevation: 6,
+                    textAlign: TextAlign.center,
                   ),
-                  onPressed: _openWhatsApp,
-                  child: const Text(
-                    'Contact Me',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.redAccent,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 32, vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      elevation: 6,
+                    ),
+                    onPressed: _openWhatsApp,
+                    child: const Text(
+                      'Contact Me',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: screenH * 0.110,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: AnimatedBuilder(
+                animation: _bounceAnimation,
+                builder: (context, child) {
+                  return Transform.translate(
+                    offset: Offset(0, -_bounceAnimation.value),
+                    child: IconButton(
+                      onPressed: widget.onDownPressed,
+                      icon: const Icon(
+                        Icons.keyboard_arrow_down,
+                        size: 48,
+                        color: Colors.red,
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
         ],

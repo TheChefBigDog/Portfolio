@@ -46,7 +46,7 @@ class PortfolioHeader extends StatelessWidget {
             children: [
               _NavButton(title: "Showcase", onTap: () {}),
               const SizedBox(width: 30),
-              _NavButton(title: "Contact Me!", onTap: () {}),
+              _NavButton(title: "Contact Me", onTap: () {}),
             ],
           ),
         ),

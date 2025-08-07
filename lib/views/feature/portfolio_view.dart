@@ -1,5 +1,6 @@
 import 'package:Bobby_Ryan_Hartono/modules/portfolio/portfolio_controller.dart';
 import 'package:Bobby_Ryan_Hartono/views/feature/blood_section.dart';
+import 'package:Bobby_Ryan_Hartono/views/feature/career_journey.dart';
 import 'package:Bobby_Ryan_Hartono/views/widget/portfolio_header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,8 +12,11 @@ class PortfolioView extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenH = MediaQuery.of(context).size.height;
     final headerH = screenH * 0.12;
+
+    final scrollController = ScrollController();
+    final careerJourneyKey = GlobalKey();
+
     return Scaffold(
-      extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(headerH),
@@ -20,10 +24,24 @@ class PortfolioView extends StatelessWidget {
       ),
       body: GetBuilder<PortfolioController>(
         builder: (controller) {
-          return const SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [SafeArea(child: BloodSection())],
+          return SingleChildScrollView(
+            controller: scrollController,
+            child: SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  BloodSection(
+                    onDownPressed: () {
+                      Scrollable.ensureVisible(
+                        careerJourneyKey.currentContext!,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                  ),
+                  CareerJourneySection(key: careerJourneyKey),
+                ],
+              ),
             ),
           );
         },
