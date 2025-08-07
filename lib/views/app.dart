@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:my_first_app/modules/portfolio/portfolio_binding.dart';
-import 'package:my_first_app/views/feature/portfolio_view.dart';
+import 'package:Bobby_Ryan_Hartono/modules/portfolio/portfolio_binding.dart';
+import 'package:Bobby_Ryan_Hartono/views/feature/portfolio_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
