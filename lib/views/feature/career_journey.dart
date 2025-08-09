@@ -5,21 +5,33 @@ class CareerJourneySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenH = MediaQuery.of(context).size.height;
     final screenW = MediaQuery.of(context).size.width;
+
+    final companies = [
+      {
+        "name": "PT. Sarana Mobile Sentosa",
+        "subtitle": "Building Indonesia Society 5.0",
+        "asset": "assets/images/ic_mobilecom.jpg",
+      },
+      {
+        "name": "PT. Sinarmas Multifinance",
+        "subtitle": "Sinarmas Multifinance ",
+        "asset": "assets/images/ic_sinarmas.png",
+      },
+    ];
 
     return Container(
       width: double.infinity,
-      height: screenH,
+      height: MediaQuery.of(context).size.height,
       color: Colors.black,
       padding: EdgeInsets.symmetric(
         horizontal: screenW * 0.1,
         vertical: 64,
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Career Journey',
             style: TextStyle(
               fontSize: 32,
@@ -27,17 +39,75 @@ class CareerJourneySection extends StatelessWidget {
               color: Colors.redAccent,
             ),
           ),
-          SizedBox(height: 24),
-          Text(
-            "My name is Bobby Ryan Hartono. I was a Java Android Developer at a corporate company called "
-            "MobileCom for two years. During my time in the startup, I developed several Native Android applications "
-            "for well-known companies such as Sqolaria, Qampus, Human Cloudz Indonesia, and IGI Online.\n\n"
-            "I later joined Sinarmas Multifinance in search of new knowledge and a wider professional network. "
-            "Throughout my career journey, I have expanded my skills to include React Native, Dart, and Java.",
+          const SizedBox(height: 24),
+          const Text(
+            "Welcome to my humble Web Page, I am Bobby Ryan. Hello.\n"
+            "This is just a hobby of mine, creating something and explore everything.\n"
+            "You may check around and test anything from this web page, I dont mind.\n\n"
+            "The skill set that I have acquired and learnt was actually from the work experience I got.\n"
+            "Below here, you may see my work experience: ",
             style: TextStyle(
               fontSize: 18,
               color: Colors.white70,
               height: 1.5,
+            ),
+          ),
+          const SizedBox(height: 40),
+          const Center(
+            child: Text(
+              "Current Work Experience",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.redAccent,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(height: 40),
+          Center(
+            child: Wrap(
+              spacing: 24,
+              runSpacing: 24,
+              alignment: WrapAlignment.center,
+              children: companies.map((company) {
+                return Container(
+                  width: screenW < 600 ? double.infinity : (screenW * 0.25),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: Colors.white,
+                      width: 2,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          company["asset"]!,
+                          height: 64,
+                          width: 64,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        company["name"]!,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ],

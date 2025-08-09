@@ -19,19 +19,27 @@ class PortfolioHeader extends StatelessWidget {
       leadingWidth: logoH + 32,
       leading: Padding(
         padding: const EdgeInsets.only(left: 32),
-        child: Image.asset(
-          'assets/images/guilt_can_be_a_killer.png',
-          height: logoH,
-          fit: BoxFit.fill,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final maxH = constraints.maxHeight;
+            final logoSize = maxH * 0.7;
+
+            return Image.asset(
+              'assets/images/guilt_can_be_a_killer.png',
+              height: logoSize,
+              width: logoSize,
+              fit: BoxFit.contain,
+            );
+          },
         ),
       ),
       flexibleSpace: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.black,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              offset: const Offset(0, 4),
+              color: Colors.black,
+              offset: Offset(0, 4),
               blurRadius: 10,
               spreadRadius: 1,
             ),
@@ -60,10 +68,10 @@ class _NavButton extends StatefulWidget {
   final VoidCallback? onTap;
 
   const _NavButton({
-    Key? key,
+    super.key,
     required this.title,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   State<_NavButton> createState() => _NavButtonState();
