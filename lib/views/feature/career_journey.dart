@@ -15,14 +15,19 @@ class CareerJourneySection extends StatelessWidget {
       },
       {
         "name": "PT. Sinarmas Multifinance",
-        "subtitle": "Sinarmas Multifinance ",
+        "subtitle": "Multifinance sinarmas",
         "asset": "assets/images/ic_sinarmas.png",
       },
     ];
 
+    final techStack = [
+      {"name": "Java", "asset": "assets/images/ic_java.png"},
+      {"name": "Dart", "asset": "assets/images/ic_dart.png"},
+      {"name": "React Native", "asset": "assets/images/ic_react.png"},
+    ];
+
     return Container(
       width: double.infinity,
-      height: MediaQuery.of(context).size.height,
       color: Colors.black,
       padding: EdgeInsets.symmetric(
         horizontal: screenW * 0.1,
@@ -31,6 +36,7 @@ class CareerJourneySection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Career Journey heading & description
           const Text(
             'Career Journey',
             style: TextStyle(
@@ -52,19 +58,20 @@ class CareerJourneySection extends StatelessWidget {
               height: 1.5,
             ),
           ),
+
           const SizedBox(height: 40),
           const Center(
             child: Text(
-              "Current Work Experience",
+              'Current Work Experience',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
                 color: Colors.redAccent,
               ),
-              textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(height: 40),
+          // Current Work Experience
           Center(
             child: Wrap(
               spacing: 24,
@@ -100,6 +107,73 @@ class CareerJourneySection extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+
+          const SizedBox(height: 60),
+
+          // Tech Stack Section
+// --- Tech Stack ---
+          const SizedBox(height: 60),
+          const Center(
+            child: Text(
+              'Tech Stack',
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                color: Colors.redAccent,
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+
+          Center(
+            child: Wrap(
+              spacing: 24,
+              runSpacing: 24,
+              alignment: WrapAlignment.center,
+              children: techStack.map((tech) {
+                return Container(
+                  width: screenW < 600 ? double.infinity : (screenW * 0.25),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: Colors.white, width: 2),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 64,
+                        width: 64,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.all(8), // breathing room
+                        child: FittedBox(
+                          fit: BoxFit.contain, // keep aspect ratio, no crop
+                          child: Image.asset(
+                            tech["asset"]!,
+                            filterQuality: FilterQuality.high, // crisp
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        tech["name"]!,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
                         textAlign: TextAlign.center,
