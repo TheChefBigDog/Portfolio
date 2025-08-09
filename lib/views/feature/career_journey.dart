@@ -36,7 +36,6 @@ class CareerJourneySection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Career Journey heading & description
           const Text(
             'Career Journey',
             style: TextStyle(
@@ -45,11 +44,8 @@ class CareerJourneySection extends StatelessWidget {
               color: Colors.redAccent,
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 12),
           const Text(
-            "Welcome to my humble Web Page, I am Bobby Ryan. Hello.\n"
-            "This is just a hobby of mine, creating something and explore everything.\n"
-            "You may check around and test anything from this web page, I dont mind.\n\n"
             "The skill set that I have acquired and learnt was actually from the work experience I got.\n"
             "Below here, you may see my work experience: ",
             style: TextStyle(
@@ -58,8 +54,7 @@ class CareerJourneySection extends StatelessWidget {
               height: 1.5,
             ),
           ),
-
-          const SizedBox(height: 40),
+          const SizedBox(height: 20),
           const Center(
             child: Text(
               'Current Work Experience',
@@ -71,7 +66,6 @@ class CareerJourneySection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          // Current Work Experience
           Center(
             child: Wrap(
               spacing: 24,
@@ -117,11 +111,6 @@ class CareerJourneySection extends StatelessWidget {
               }).toList(),
             ),
           ),
-
-          const SizedBox(height: 60),
-
-          // Tech Stack Section
-// --- Tech Stack ---
           const SizedBox(height: 60),
           const Center(
             child: Text(
@@ -134,7 +123,6 @@ class CareerJourneySection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-
           Center(
             child: Wrap(
               spacing: 24,
@@ -159,12 +147,12 @@ class CareerJourneySection extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        padding: const EdgeInsets.all(8), // breathing room
+                        padding: const EdgeInsets.all(8),
                         child: FittedBox(
-                          fit: BoxFit.contain, // keep aspect ratio, no crop
+                          fit: BoxFit.contain,
                           child: Image.asset(
                             tech["asset"]!,
-                            filterQuality: FilterQuality.high, // crisp
+                            filterQuality: FilterQuality.high,
                           ),
                         ),
                       ),
