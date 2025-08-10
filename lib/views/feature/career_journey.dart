@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:Bobby_Ryan_Hartono/constant/app_asset.dart';
 
 class CareerJourneySection extends StatelessWidget {
-  const CareerJourneySection({Key? key}) : super(key: key);
+  const CareerJourneySection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,19 +12,19 @@ class CareerJourneySection extends StatelessWidget {
       {
         "name": "PT. Sarana Mobile Sentosa",
         "subtitle": "Building Indonesia Society 5.0",
-        "asset": "assets/images/ic_mobilecom.jpg",
+        "asset": AppAssets.mobilecomIcon,
       },
       {
         "name": "PT. Sinarmas Multifinance",
         "subtitle": "Multifinance sinarmas",
-        "asset": "assets/images/ic_sinarmas.png",
+        "asset": AppAssets.sinarmasIcon,
       },
     ];
 
     final techStack = [
-      {"name": "Java", "asset": "assets/images/ic_java.png"},
-      {"name": "Dart", "asset": "assets/images/ic_dart.png"},
-      {"name": "React Native", "asset": "assets/images/ic_react.png"},
+      {"name": "Java", "asset": AppAssets.javaIcon},
+      {"name": "Dart", "asset": AppAssets.dartIcon},
+      {"name": "React Native", "asset": AppAssets.reactNativeIcon},
     ];
 
     return Container(

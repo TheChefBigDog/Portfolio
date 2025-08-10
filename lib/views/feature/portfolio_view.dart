@@ -17,7 +17,7 @@ class PortfolioView extends StatelessWidget {
     final careerJourneyKey = GlobalKey();
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(headerH),
         child: const PortfolioHeader(heightFraction: 0.12),

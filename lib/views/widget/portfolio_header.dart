@@ -1,3 +1,4 @@
+import 'package:Bobby_Ryan_Hartono/constant/app_asset.dart';
 import 'package:flutter/material.dart';
 
 class PortfolioHeader extends StatelessWidget {
@@ -25,7 +26,7 @@ class PortfolioHeader extends StatelessWidget {
             final logoSize = maxH * 0.7;
 
             return Image.asset(
-              'assets/images/guilt_can_be_a_killer.png',
+              AppAssets.myName,
               height: logoSize,
               width: logoSize,
               fit: BoxFit.contain,

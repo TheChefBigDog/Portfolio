@@ -1,4 +1,4 @@
-import 'package:Bobby_Ryan_Hartono/assets/app_asset.dart';
+import 'package:Bobby_Ryan_Hartono/constant/app_asset.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -51,7 +51,12 @@ class _BloodSectionState extends State<BloodSection>
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset(AppAssets.bobbyAI, fit: BoxFit.cover),
+          Container(color: Colors.black),
+          Image.asset(
+            AppAssets.bobbyAI,
+            fit: BoxFit.contain,
+            alignment: Alignment.centerRight,
+          ),
           Positioned(
             top: screenH * 0.35,
             child: SizedBox(
@@ -82,7 +87,7 @@ class _BloodSectionState extends State<BloodSection>
                   const SizedBox(height: 16),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.redAccent,
+                      backgroundColor: Colors.red[900],
                       padding: const EdgeInsets.symmetric(
                           horizontal: 32, vertical: 14),
                       shape: RoundedRectangleBorder(
