@@ -1,3 +1,4 @@
+import 'package:Bobby_Ryan_Hartono/assets/app_asset.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -50,7 +51,7 @@ class _BloodSectionState extends State<BloodSection>
       child: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset('assets/images/bobby_AI.png', fit: BoxFit.cover),
+          Image.asset(AppAssets.bobbyAI, fit: BoxFit.cover),
           Positioned(
             top: screenH * 0.35,
             child: SizedBox(
